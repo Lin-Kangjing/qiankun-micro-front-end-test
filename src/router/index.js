@@ -3,7 +3,7 @@
  * @FilePath: \micro-front-end\src\router\index.js
  * @Date: 2022-11-07 16:37:28
  * @LastEditors: Lin_kangjing
- * @LastEditTime: 2022-11-09 15:58:55
+ * @LastEditTime: 2022-11-09 16:46:38
  * @author: Lin_kangjing
  */
 import Vue from "vue";
@@ -55,11 +55,11 @@ const createRouter = () =>
                 component: () =>
                   import(/* webpackChunkName: "user" */ "@/views/other.vue"),
               },
-              {
-                path: "/*",
-                name:'subapp',
-                component: MicroFrontEnd,
-              },
+              // {
+              //   path: "/*",
+              //   name:'subapp',
+              //   component: MicroFrontEnd,
+              // },
             ],
           },
         ],

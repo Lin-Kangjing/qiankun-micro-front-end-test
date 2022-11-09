@@ -3,7 +3,7 @@
  * @FilePath: \micro-front-end\src\views\base.vue
  * @Date: 2022-11-07 16:42:41
  * @LastEditors: Lin_kangjing
- * @LastEditTime: 2022-11-09 15:23:47
+ * @LastEditTime: 2022-11-09 16:23:26
  * @author: Lin_kangjing
 -->
 <template>
@@ -18,7 +18,7 @@
         <router-link to="/subapp">Go to subapp</router-link>
       </div>
       <div class="main">
-          <router-view></router-view>
+        <router-view></router-view>
       </div>
     </div>
   </div>

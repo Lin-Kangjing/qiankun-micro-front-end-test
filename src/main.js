@@ -3,11 +3,12 @@
  * @FilePath: \micro-front-end\src\main.js
  * @Date: 2022-11-07 15:57:53
  * @LastEditors: Lin_kangjing
- * @LastEditTime: 2022-11-09 15:58:18
+ * @LastEditTime: 2022-11-09 16:43:47
  * @author: Lin_kangjing
  */
 import Vue from "vue";
 import App from "./App.vue";
+// import SubApp from "./SubApp.vue";
 import router from "./router";
 import {
   registerMicroApps,
@@ -18,11 +19,38 @@ import {
 
 Vue.config.productionTip = false;
 
+// function vueRender({ loading }) {
+//   return new Vue({
+//     template: `
+//       <div id="subapp-container">
+//         <h4 v-if="loading" class="subapp-loading">Loading...</h4>
+//         <div id="subapp-viewport"></div>
+//       </div>
+//     `,
+//     el: '#subapp-container',
+//     data() {
+//       return {
+//         loading,
+//       };
+//     },
+//     render(h){
+
+//     }
+//   }).$mount("#app");
+// }
+// eslint-disable-next-line no-unused-vars
+// let app = null;
+// function render() {
+//   app = new Vue({
+//     render: (h) => h(App),
+//     router,
+//   }).$mount("#app");
+// }
+// render();
 new Vue({
   render: (h) => h(App),
   router,
 }).$mount("#app");
-
 registerMicroApps([
   {
     name: "sub app", // app name registered
@@ -44,7 +72,6 @@ registerMicroApps([
 // });
 
 // onGlobalStateChange((value, prev) => console.log('[onGlobalStateChange - master]:', value, prev));
-
 start({
   sandbox: {
     experimentalStyleIsolation: true,
