@@ -3,7 +3,7 @@
  * @FilePath: \micro-front-end\src\subApp\vueDemo\src\main.js
  * @Date: 2022-11-07 16:00:32
  * @LastEditors: Lin_kangjing
- * @LastEditTime: 2022-11-09 10:54:58
+ * @LastEditTime: 2022-11-09 15:58:45
  * @author: Lin_kangjing
  */
 import "./public-path";
@@ -19,6 +19,10 @@ function render(props = {}) {
   router = createRouter({
     base: window.__POWERED_BY_QIANKUN__ ? "/subapp/" : "/",
   });
+  router.beforeEach((to,from,next) => {
+    // console.log('sub app beforEach',{to,from})
+    next()
+  })
   const { container } = props;
   instance = new Vue({
     router,
@@ -31,15 +35,27 @@ if (!window.__POWERED_BY_QIANKUN__) {
   render();
 }
 export async function bootstrap() {
-  console.log("[vue] vue app bootstraped");
+  console.log('%c%s',"color: green;","[vue] vue app bootstraped");
+}
+function onStateChange (props) {
+  // props.onGlobalStateChange((value,prev)=>{
+  //   // console.log('[onGlobalStateChange - vueDemo]');
+  //   // console.log(value)
+  //   // console.log(prev)
+  // },true)
+  props.setGlobalState({
+    provider: props.name,
+    user:'lkj',
+    subapp:true
+  })
 }
 export async function mount(props) {
-  console.log("[vue] props from main framework", props);
+  console.log("[vue] props from main framework");
+  onStateChange(props)
   render(props);
 }
 export async function unmount() {
-  console.log("[vue] vue app unmount");
-  console.log(router);
+  console.log('%c%s',"color: green;","[vue] vue app unmount");
   instance.$destroy();
   instance.$el.innerHTML = "";
   instance = null;

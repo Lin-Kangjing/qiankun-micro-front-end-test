@@ -3,7 +3,7 @@
  * @FilePath: \micro-front-end\src\subApp\vueDemo\src\router\index.js
  * @Date: 2022-11-07 16:37:28
  * @LastEditors: Lin_kangjing
- * @LastEditTime: 2022-11-09 10:23:41
+ * @LastEditTime: 2022-11-09 15:38:14
  * @author: Lin_kangjing
  */
 import Vue from "vue";
@@ -21,14 +21,14 @@ const createRouter = (config) =>
         component: ()=>import('@/views/base.vue'),
         children: [
           {
-            path: "home",
-            name: "home",
+            path: "home2",
+            name: "home2",
             component: () =>
               import(/* webpackChunkName: "home" */ "@/views/home.vue"),
           },
           {
-            path: "other",
-            name: "other",
+            path: "other2",
+            name: "other2",
             component: () =>
               import(/* webpackChunkName: "other" */ "@/views/other.vue"),
           },
@@ -36,4 +36,5 @@ const createRouter = (config) =>
       },
     ],
   });
+
 export default createRouter;

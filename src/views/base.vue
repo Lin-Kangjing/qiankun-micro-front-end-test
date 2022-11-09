@@ -3,7 +3,7 @@
  * @FilePath: \micro-front-end\src\views\base.vue
  * @Date: 2022-11-07 16:42:41
  * @LastEditors: Lin_kangjing
- * @LastEditTime: 2022-11-08 17:19:58
+ * @LastEditTime: 2022-11-09 15:23:47
  * @author: Lin_kangjing
 -->
 <template>
@@ -11,11 +11,11 @@
     <div class="header">micro front end</div>
     <div class="container">
       <div class="side">
-        <router-link to="home">Go to Home</router-link>
+        <router-link to="/home">Go to Home</router-link>
         <br />
-        <router-link to="other">Go to Other</router-link>
+        <router-link to="/other">Go to Other</router-link>
         <br />
-        <router-link to="/subapp/">Go to subapp</router-link>
+        <router-link to="/subapp">Go to subapp</router-link>
       </div>
       <div class="main">
           <router-view></router-view>
