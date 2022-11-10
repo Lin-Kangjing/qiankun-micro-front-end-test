@@ -3,7 +3,7 @@
  * @FilePath: \micro-front-end\src\subApp\vueDemo\src\main.js
  * @Date: 2022-11-07 16:00:32
  * @LastEditors: Lin_kangjing
- * @LastEditTime: 2022-11-09 15:58:45
+ * @LastEditTime: 2022-11-10 11:17:44
  * @author: Lin_kangjing
  */
 import "./public-path";
@@ -20,7 +20,7 @@ function render(props = {}) {
     base: window.__POWERED_BY_QIANKUN__ ? "/subapp/" : "/",
   });
   router.beforeEach((to,from,next) => {
-    // console.log('sub app beforEach',{to,from})
+    console.log('sub app beforEach',{to,from})
     next()
   })
   const { container } = props;

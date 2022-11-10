@@ -3,12 +3,12 @@
  * @FilePath: \micro-front-end\src\main.js
  * @Date: 2022-11-07 15:57:53
  * @LastEditors: Lin_kangjing
- * @LastEditTime: 2022-11-09 16:43:47
+ * @LastEditTime: 2022-11-10 14:46:16
  * @author: Lin_kangjing
  */
 import Vue from "vue";
 import App from "./App.vue";
-// import SubApp from "./SubApp.vue";
+// import Loading from "./Loading.vue";
 import router from "./router";
 import {
   registerMicroApps,
@@ -19,44 +19,37 @@ import {
 
 Vue.config.productionTip = false;
 
-// function vueRender({ loading }) {
-//   return new Vue({
-//     template: `
-//       <div id="subapp-container">
-//         <h4 v-if="loading" class="subapp-loading">Loading...</h4>
-//         <div id="subapp-viewport"></div>
-//       </div>
-//     `,
-//     el: '#subapp-container',
-//     data() {
-//       return {
-//         loading,
-//       };
-//     },
-//     render(h){
+let app = null;
+function render(loading = false) {
+  // body
+  if (!app) {
+    app = new Vue({
+      data() {
+        return{
+          loading: false,
+        }
+      },
+      render: function(h) {
+        console.log('%c trigger render function','color:red;')
+        return h(App, { props: { loading: this.loading } });
+      },
+      router,
+    }).$mount("#app");
+  } else {
+    app.loading = !!loading;
+  }
+}
+render();
 
-//     }
-//   }).$mount("#app");
-// }
-// eslint-disable-next-line no-unused-vars
-// let app = null;
-// function render() {
-//   app = new Vue({
-//     render: (h) => h(App),
-//     router,
-//   }).$mount("#app");
-// }
-// render();
-new Vue({
-  render: (h) => h(App),
-  router,
-}).$mount("#app");
 registerMicroApps([
   {
     name: "sub app", // app name registered
     entry: "//localhost:8001",
     container: "#subApp",
-    // activeRule:"/subapp"
+    loader: render,
+    // loader: (loading)=>{
+    //   console.log({loading})
+    // },
     activeRule: (location) => {
       const { pathname } = location;
       if (pathname.includes("/subapp")) {
@@ -66,6 +59,8 @@ registerMicroApps([
     },
   },
 ]);
+
+// 微应用通讯
 // const { onGlobalStateChange, } = initGlobalState({
 //   provider: 'main',
 //   user:'lkj'
